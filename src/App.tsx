@@ -1,9 +1,10 @@
+import { Button } from "./components/ui/button"
 
 
 function App() {
   return (
     <div className="text-4xl text-red-500">
-      hello kolkata
+      <Button variant={"destructive"}>click us</Button>
     </div>
   )
 }
