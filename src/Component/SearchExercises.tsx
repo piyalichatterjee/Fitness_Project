@@ -13,7 +13,8 @@ function SearchExercises() {
 
   let [search, setSearch] = useState<string>("");
   let [exercises, setExercises] = useState<FetchDataProps[] | undefined>();
-
+  let [bodyParts, setBodyParts] = useState<string[]| undefined>();
+  
   useEffect(() => {
     let fetchExercisesData = async () => {
       // let bodyPartsData: string[] = await fetchData(
@@ -21,11 +22,12 @@ function SearchExercises() {
       //   exercisesOptions
       // );
       let bodyPartsData = bodypartdataList;
-      console.log(bodyPartsData);
+      // console.log(bodyPartsData);
+      setBodyParts(["all",...bodyPartsData])
     };
     fetchExercisesData();
   }, []);
-
+  console.log(bodyParts)
   let handelClick = async () => {
     //   // console.log(search);
     if (search) {
