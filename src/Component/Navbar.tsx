@@ -10,13 +10,13 @@ import { Link, useLocation } from "react-router-dom";
 function Navbar() {
   const location = useLocation();
   return (
-    <div className="border-2 border-red-500">
-      <NavigationMenu className="border-2 border-black text-black flex gap-24 lg:ml-20 p-2 font-bold text-xl ml-10">
+    <div>
+      <NavigationMenu className="text-black flex gap-24 lg:ml-20 p-2 font-bold text-xl ml-10">
         <Link to="/">
           <TbGymnastics className="text-black text-5xl" />
         </Link>
         <NavigationMenuList>
-          <NavigationMenuItem className="mx-8 border-2 border-black">
+          <NavigationMenuItem className="mx-8">
             <Link
               to="/"
               className={`${
@@ -26,7 +26,7 @@ function Navbar() {
               Home
             </Link>
           </NavigationMenuItem>
-          <NavigationMenuItem className="border-2 border-black">
+          <NavigationMenuItem>
             <Link
               to="/exercise/:id"
               className={`${

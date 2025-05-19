@@ -1,20 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import {
   exercisesOptions,
   fetchData,
   FetchDataProps,
 } from "../Utils/fetchData";
 import { bodypartdataList, exercisesDataList } from "../Utils/data";
-
-function SearchExercises() {
-  // console.log(exercisesDataList)
+import HorizontalScrollbar from "./HorizontalScrollbar";
+interface HomeDataProps {
+  bodyPart: string;
+  setBodyPart: Dispatch<SetStateAction<string>>;
+  setExercises: Dispatch<SetStateAction<FetchDataProps[] | undefined>>;
+}
+function SearchExercises({
+  bodyPart,
+  setExercises,
+  setBodyPart,
+}: HomeDataProps) {
+  
 
   let [search, setSearch] = useState<string>("");
-  let [exercises, setExercises] = useState<FetchDataProps[] | undefined>();
-  let [bodyParts, setBodyParts] = useState<string[]| undefined>();
-  
+
+  let [bodyParts, setBodyParts] = useState<string[] | undefined>();
+
   useEffect(() => {
     let fetchExercisesData = async () => {
       // let bodyPartsData: string[] = await fetchData(
@@ -23,11 +32,11 @@ function SearchExercises() {
       // );
       let bodyPartsData = bodypartdataList;
       // console.log(bodyPartsData);
-      setBodyParts(["all",...bodyPartsData])
+      setBodyParts(["all", ...bodyPartsData]);
     };
     fetchExercisesData();
   }, []);
-  console.log(bodyParts)
+  // console.log(bodyParts);
   let handelClick = async () => {
     //   // console.log(search);
     if (search) {
@@ -53,7 +62,7 @@ function SearchExercises() {
   };
 
   return (
-    <div className="border-2 border-black text-center">
+    <div className="text-center">
       <h1 className="font-bold text-2xl lg:text-4xl">
         Awesome Exerises you <br />
         should Know
@@ -73,6 +82,9 @@ function SearchExercises() {
         >
           Search
         </Button>
+      </div>
+      <div>
+        <HorizontalScrollbar bodyParts={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 
 function HeroBanner() {
   return (
-    <div className="flex items-center  ml-10 lg:ml-20 h-screen xl:mt-20 border-2">
-      <div className="border-2 border-green-500">
+    <div className="flex items-center  ml-10 lg:ml-20 h-screen xl:mt-20">
+      <div>
         <h2 className="text-red-500 font-bold text-2xl">Fitness Club</h2>
         <h1 className="flex flex-col text-4xl lg:text-6xl font-medium py-8 gap-3">
           <span>Sweat, Smile</span>
