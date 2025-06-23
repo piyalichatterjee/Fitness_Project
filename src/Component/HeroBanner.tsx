@@ -10,7 +10,7 @@ function HeroBanner() {
           <span>And Repeat</span>
         </h1>
         <p className="font-serif pb-10">
-          Check out the most ffective exerises personalized to you
+          Check out the most effective exerises personalized to you
         </p>
         <Button variant={"destructive"} className="cursor-pointer">
           Explore Exercises

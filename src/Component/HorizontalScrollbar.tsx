@@ -9,19 +9,22 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { RiBodyScanFill } from "react-icons/ri";
+import { bodyPartsProps } from "@/Utils/type";
+import { useSearchParams } from "react-router-dom";
 
-interface bodyPartProps {
-  bodyParts: string[] | undefined;
-  bodyPart: string;
-  setBodyPart: React.Dispatch<React.SetStateAction<string>>;
-}
+// interface bodyPartProps {
+//   bodyParts: string[] | undefined;
+//   bodyPart: string;
+//   setBodyPart: React.Dispatch<React.SetStateAction<string>>;
+// }
 
 function HorizontalScrollbar({
   bodyParts,
-  bodyPart,
-  setBodyPart,
-}: bodyPartProps) {
-  // console.log(bodyPart);
+}:
+bodyPartsProps) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const bodyPart = searchParams.get("bodypart") || "all";
+  // console.log(bodypart);
   return (
     <div className="w-[80%] mx-auto mt-20">
       <Carousel>
@@ -39,7 +42,8 @@ function HorizontalScrollbar({
                       className={`flex aspect-square items-center justify-center ${
                         bodyPart === item ? "border-t-4 border-red-600" : ""
                       }`}
-                      onClick={() => setBodyPart(item)}
+                      // onClick={() => setBodyPart(item)}
+                      onClick={() => setSearchParams({ bodypart: item })}
                     >
                       <div className="font-semibold flex flex-col items-center gap-6">
                         <RiBodyScanFill className="text-red-600 text-5xl" />

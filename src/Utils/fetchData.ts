@@ -1,41 +1,20 @@
-export interface FetchDataProps {
-  bodyPart: string;
-  equipment: string;
-  gifUrl: string;
-  id: string;
-  name: string;
-  target: string;
-  secondaryMuscles: string[];
-  instructions: string[];
-}
-[];
+import { exercisesOptionsProps } from "./type";
 
-export interface exercisesOptionsProps {
-  method: string;
-  headers: {
-    "x-rapidapi-host": string;
-    "x-rapidapi-key": string;
-  };
-}
 export let exercisesOptions = {
   method: "GET",
   headers: {
     "x-rapidapi-host": "exercisedb.p.rapidapi.com",
-    "x-rapidapi-key": import.meta.env.VITE_RAPID_API_KYE,
+    "x-rapidapi-key": import.meta.env.VITE_RAPID_API_KEY,
   },
 };
-// console.log(exercisesOptions.headers["x-rapidapi-key"]);
-// console.log(import.meta.env.VITE_RAPID_API_KYE);
-// console.log(typeof import.meta.env.VITE_RAPID_API_KYE);
+export let youtubeOptions = {
+  method: "GET",
+  headers: {
+    "x-rapidapi-host": "youtube-search-and-download.p.rapidapi.com",
+    "x-rapidapi-key": import.meta.env.VITE_RAPID_API_KEY,
+  },
+};
 
-// export let fetchData = async(url:string, options:exercisesOptionsProps) => {
-//   let response = await fetch(url, options);
-//     // console.log(options)
-//     // console.log(rsesponse)
-//   let data = await response.json();
-// // console.log(data)
-//   return data;
-// };
 export async function fetchData<T>(
   url: string,
   options: exercisesOptionsProps
